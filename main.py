@@ -12,6 +12,8 @@ def main():
     c2.draw()
     c3.draw()
 
+    c1.draw_move(c2)
+
     win.wait_for_close()
 
 
