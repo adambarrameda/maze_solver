@@ -5,9 +5,7 @@ class Window:
         self.__root = Tk()
         self.__root.title("Maze Solver") 
         self.running = False
-        self.__width = width
-        self.__height = height
-        self.canvas = Canvas(width=self.__width, height=self.__height, bg='grey')
+        self.canvas = Canvas(self.__root, height=height, width=width, bg='grey')
         self.canvas.pack(fill=BOTH, expand=True)
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
 
@@ -41,5 +39,5 @@ class Line:
         canvas.create_line(
             self.p1.x, self.p1.y, self.p2.x, self.p2.y, fill=fill_color, width=2
         )
-        canvas.pack()
+        canvas.pack(fill=BOTH, expand=1)
     
