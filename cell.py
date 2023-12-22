@@ -1,7 +1,7 @@
 from window import Line, Point
 
 class Cell:
-    def __init__(self, window):
+    def __init__(self, window=None):
         self.top = True
         self.right = True
         self.bottom = True
@@ -17,14 +17,15 @@ class Cell:
         self._x2 = x2
         self._y1 = y1
         self._y2 = y2
-        if self.top:
-            self._win.draw_line(Line(Point(x1, y1),Point(x2, y1)), width=4)
-        if self.right:
-            self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)), width=4) 
-        if self.bottom:
-            self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)), width=4)
-        if self.left:
-            self._win.draw_line(Line(Point(x1, y1),Point(x1, y2)), width=4)
+        if self._win is not None:
+            if self.top:
+                self._win.draw_line(Line(Point(x1, y1),Point(x2, y1)), width=4)
+            if self.right:
+                self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)), width=4) 
+            if self.bottom:
+                self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)), width=4)
+            if self.left:
+                self._win.draw_line(Line(Point(x1, y1),Point(x1, y2)), width=4)
 
     def draw_move(self, to_cell, undo=False):
         from_center = Point((self._x1 + self._x2) / 2, (self._y1 + self._y2) / 2)
